@@ -228,6 +228,7 @@ RCT_EXPORT_METHOD(shouldDropEmptyRanges:(BOOL)drop)
                             };
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"beaconsDidRange" body:event];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNBeaconBeaconsDidRange" object:self userInfo:event];
 }
 
 -(void)locationManager:(CLLocationManager *)manager
@@ -238,6 +239,7 @@ RCT_EXPORT_METHOD(shouldDropEmptyRanges:(BOOL)drop)
                             };
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"regionDidEnter" body:event];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNBeaconRegionDidEnter" object:self userInfo:event];
 }
 
 -(void)locationManager:(CLLocationManager *)manager
@@ -248,6 +250,7 @@ RCT_EXPORT_METHOD(shouldDropEmptyRanges:(BOOL)drop)
                             };
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:@"regionDidExit" body:event];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RNBeaconRegionDidExit" object:self userInfo:event];
 }
 
 @end
